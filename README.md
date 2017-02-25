@@ -43,6 +43,17 @@ end
 
 This player will simply randomly play any of the available actions. It doesn't really matter what the set of observations represents, but if you need to know, it consists of the state of the game represented as an array of size 9, each cell being either `nil` or filled by a player. Up to you to make this better by making the player play more intelligently.
 
+If required, you can use `Tictactie.display(game)` to output the current state of the game. The output should look a bit like this;
+
+```shell
+X X O
+X - O
+O - O
+```
+
+You could also decide to play each game step by step instead of running the full thing all at once by calling `game.step` instead of `game.play`.
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
