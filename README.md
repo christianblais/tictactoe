@@ -1,8 +1,6 @@
 # Tictactoe
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tictactoe`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Tictactoe is a small utility I use to test different AI strategies against each others.
 
 ## Installation
 
@@ -22,7 +20,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Basic usage is as follow. Define a game, assign players, and play.
+
+```ruby
+require 'tictactoe'
+
+game = Tictactoe::Game.new
+game.player_1 = Tictactoe::Player.new
+game.player_2 = Tictactoe::Player.new
+game.play
+```
+
+It really starts to get fun once you build your own player. At the very least, a player simply needs to answers to one method, `play`. It receives the state of the game, then return the cell in which it wants to play. The game is represented as a single array of size 9, each slices of 3 representing a row. A random player could look like this;
+
+```ruby
+class Player
+  def play(board)
+    board.map.with_index do |value, index|
+      index unless value
+    end.compact.sample
+  end
+end
+```
 
 ## Development
 
