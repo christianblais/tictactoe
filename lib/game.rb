@@ -24,8 +24,11 @@ module Tictactoe
         raise StandardError.new('Game already completed')
       end
 
+      acts = board.map.with_index { |value, index| index unless value }.compact
+      obsv = board.dup
+
       curr = current_player.next
-      move = curr.play(board.dup)
+      move = curr.play(obsv, acts)
 
       if move > 8 || move < 0 || board[move]
         raise StandardError.new('Invalid move')

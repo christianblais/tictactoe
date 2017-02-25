@@ -1,9 +1,7 @@
 module Tictactoe
   class Player
-    def play(board)
-      board.map.with_index do |value, index|
-        index unless value
-      end.compact.sample
+    def play(observations, actions)
+      actions.sample
     end
 
     def score(point)

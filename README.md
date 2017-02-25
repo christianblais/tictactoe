@@ -31,17 +31,17 @@ game.player_2 = Tictactoe::Player.new
 game.play
 ```
 
-It really starts to get fun once you build your own player. At the very least, a player simply needs to answers to one method, `play`. It receives the state of the game, then return the cell in which it wants to play. The game is represented as a single array of size 9, each slices of 3 representing a row. A random player could look like this;
+It really starts to get fun once you build your own player. At the very least, a player simply needs to answers to one method, `play`. It receives a set of observations as well as an array of possible actions. At its simplest, a player can look like this;
 
 ```ruby
 class Player
-  def play(board)
-    board.map.with_index do |value, index|
-      index unless value
-    end.compact.sample
+  def play(observations, actions)
+    actions.sample
   end
 end
 ```
+
+This player will simply randomly play any of the available actions. It doesn't really matter what the set of observations represents, but if you need to know, it consists of the state of the game represented as an array of size 9, each cell being either `nil` or filled by a player. Up to you to make this better by making the player play more intelligently.
 
 ## Development
 
